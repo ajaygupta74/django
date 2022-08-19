@@ -1,1 +1,1 @@
-# painteroid
+# Personal Django Project
