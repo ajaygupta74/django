@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "ckeditor",
     "user",
     "products",
 ]
@@ -123,3 +125,15 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CKEDITOR_UPLOAD_PATH = os.environ.get('CKEDITOR_UPLOAD_PATH')
+# CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+
+CKEDITOR_CONFIGS = {
+    'awesome_ckeditor': {
+        'toolbar': None,
+    },
+    'default': {
+        'toolbar': 'Basic',
+    },
+}

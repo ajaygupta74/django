@@ -2,6 +2,8 @@ from django.db import models
 from sorl.thumbnail import ImageField
 from ckeditor.fields import RichTextField
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import slugify
+from django.core.exceptions import ValidationError
 
 
 from user.models import User
@@ -58,8 +60,7 @@ class Product(models.Model):
     title = models.CharField(max_length=200)
     sub_title = models.CharField(max_length=200, null=True, blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
-    web_description = RichTextField(
+    description = RichTextField(
         config_name='awesome_ckeditor', null=True, blank=True)
     category = models.ForeignKey(ProductCategory,
                                  on_delete=models.CASCADE,
