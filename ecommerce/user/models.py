@@ -2,6 +2,14 @@ from django.db import models
 from sorl.thumbnail import ImageField
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import ugettext_lazy as _
+# from django.utils.html import mark_safe
+from django.contrib.auth.hashers import make_password
+import string    
+import random
+
+from django.db import models
+from django.core.exceptions import ValidationError
+from django.conf import settings
 
 
 class Avatar(models.Model):
@@ -11,9 +19,30 @@ class Avatar(models.Model):
     image = ImageField(upload_to='upload/images/users/avatar/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    # def image_preview(self):
+    #     return mark_safe('<img src="%s" width="100" height="100" />' % (self.image))
 
 
-class User(models.Model):
+class AbstractUser(models.Model):
+    def generate_password():
+        password = "dfghjk"
+        return password
+    
+    avatar = models.ForeignKey(Avatar,
+                               related_name="users",
+                               on_delete=models.CASCADE,
+                               null=True)
+    password = models.CharField(max_length=100, default=generate_password())
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def save(self, *args, **kwargs):
+        self.password = make_password((self.password))
+        super(AbstractUser, self).save(*args, **kwargs)
+
+
+class User(AbstractUser):
     class Gender_Choice(models.IntegerChoices):
         UNKNOWN = 0, _("Unknown")
         MALE = 1, _("Male")
@@ -28,23 +57,17 @@ class User(models.Model):
     last_name = models.CharField(max_length=150, blank=True)
     email = models.EmailField(blank=True)
     phone = PhoneNumberField()
-    avatar = models.ForeignKey(Avatar,
-                               related_name="users",
-                               on_delete=models.CASCADE,
-                               null=True)
     datetime_of_birth = models.DateTimeField(blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
-    score_balance = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     gender = models.PositiveIntegerField(
         choices=Gender_Choice.choices,
         default=Gender_Choice.UNKNOWN)
     priority = models.PositiveIntegerField(
         choices=Priority_Choices.choices,
         default=Priority_Choices.NORMAL_PRIORITY)
+    score_balance = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     is_deleted = models.BooleanField(default=False)
     deleted_at = models.DateTimeField(null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     @property
     def user_name(self):
