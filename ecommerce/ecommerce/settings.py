@@ -12,10 +12,14 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import yaml
+from yaml.loader import SafeLoader
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+with open(f'{BASE_DIR}/variables.yml') as info:
+    ENV_VARIABLES = yaml.load(info, Loader=SafeLoader)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -38,6 +42,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "encrypted_model_fields",
+    "django_extensions",
+    # "sorl.thumbnail",
     "ckeditor",
     "user",
     "products",
@@ -52,6 +59,15 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework_yaml.parsers.YAMLParser',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework_yaml.renderers.YAMLRenderer',
+    ),
+}
 
 ROOT_URLCONF = "ecommerce.urls"
 
@@ -125,6 +141,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+FIELD_ENCRYPTION_KEY = os.environ.get('FIELD_ENCRYPTION_KEY', ENV_VARIABLES['KEYS']['SECRET_KEY'])
 
 CKEDITOR_UPLOAD_PATH = os.environ.get('CKEDITOR_UPLOAD_PATH')
 # CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
