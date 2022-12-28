@@ -1,2 +1,10 @@
 KEYS:
   SECRET_KEY: 6_INBH5OwN1VJpDjH6Sz1nphdjcfH-anAjXNmxQONZg=
+
+DATABASE:
+  ENGINE: django.db.backends.mysql
+  NAME: django_ecommerce
+  USER: root
+  HOST: 127.0.0.1
+  PASS: qwerty@123
+  PORT: 3306

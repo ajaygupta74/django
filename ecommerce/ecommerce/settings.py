@@ -94,10 +94,14 @@ WSGI_APPLICATION = "ecommerce.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+   'default': {
+        'ENGINE': ENV_VARIABLES['DATABASE']['ENGINE'],
+        'NAME': ENV_VARIABLES['DATABASE']['NAME'],
+        'USER': ENV_VARIABLES['DATABASE']['USER'],
+        'PASSWORD': ENV_VARIABLES['DATABASE']['PASS'],
+        'HOST': ENV_VARIABLES['DATABASE']['HOST'],
+        'PORT': ENV_VARIABLES['DATABASE']['PORT'],
+    },
 }
 
 
@@ -142,7 +146,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-FIELD_ENCRYPTION_KEY = os.environ.get('FIELD_ENCRYPTION_KEY', ENV_VARIABLES['KEYS']['SECRET_KEY'])
+FIELD_ENCRYPTION_KEY = os.environ.get(
+    'FIELD_ENCRYPTION_KEY', ENV_VARIABLES['KEYS']['SECRET_KEY'])
 
 CKEDITOR_UPLOAD_PATH = os.environ.get('CKEDITOR_UPLOAD_PATH')
 # CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
