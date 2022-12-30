@@ -1,3 +1,15 @@
 {
-    "git.ignoreLimitWarning": true
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": false,
+  "editor.rulers": [
+      {
+        "column": 80,    // spacing of 1st column from left
+        "color": "#ff9900"   // orange, Go Vols!
+      },
+        100,  // 2nd ruler with no color option
+      {
+       "column": 120,      // third ruler
+       "color": "#9f0af5"  // purple, go Pirates!
+      }
+   ]
 }

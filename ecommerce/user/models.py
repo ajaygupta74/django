@@ -7,7 +7,6 @@ from django.contrib.auth.hashers import make_password
 import string
 import random
 
-from django.db import models
 from django.core.exceptions import ValidationError
 from django.conf import settings
 
@@ -21,7 +20,8 @@ class Avatar(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     # def image_preview(self):
-    #     return mark_safe('<img src="%s" width="100" height="100" />' % (self.image))
+    #     return mark_safe(
+    #         '<img src="%s" width="100" height="100" />' % (self.image))
 
 
 class AbstractUser(models.Model):
@@ -65,7 +65,8 @@ class User(AbstractUser):
     priority = models.PositiveIntegerField(
         choices=Priority_Choices.choices,
         default=Priority_Choices.NORMAL_PRIORITY)
-    score_balance = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    score_balance = models.DecimalField(
+        max_digits=5, decimal_places=2, default=0)
     is_deleted = models.BooleanField(default=False)
     deleted_at = models.DateTimeField(null=True, blank=True)
 
