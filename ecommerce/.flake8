@@ -11,5 +11,5 @@ exclude =
     # This contains webpack builds
     dist,
     migrations,
-    astro_web/settings,
+    ecommerce/settings,
 max-complexity = 10
