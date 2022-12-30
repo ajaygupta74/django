@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: django-useraudit
+Version: 1.7.1
+Summary: Django user audit utilities like logging user log in, disabling access when password expires or user is inactive
+Home-page: https://github.com/muccg/django-useraudit
+Author: CCG, Murdoch University
+Author-email: devops@ccg.murdoch.edu.au
+License: UNKNOWN
+Download-URL: https://github.com/muccg/django-useraudit/releases
+Platform: UNKNOWN
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development
+
+Django user audit utilities like logging user log in, disabling access when password expires or user is inactive
+
+
