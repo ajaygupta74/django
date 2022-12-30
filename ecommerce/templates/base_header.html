@@ -1,0 +1,142 @@
+<style>
+body.offcanvas-active{overflow:hidden;}
+.offcanvas-header{ display:none; }
+.screen-darken{height: 100%; width:0%; z-index: 30; position: fixed; top: 0; right: 0; opacity:0; visibility:hidden; background-color: rgba(34, 34, 34, 0.6);
+	transition:opacity .2s linear, visibility 0.2s, width 2s ease-in; }
+.screen-darken.active{z-index:10; transition:opacity .3s ease, width 0s; opacity:1; width:100%; visibility:visible;}
+nav#navbar_main {background: #cee4f7;}
+.serach-mob{display: none;}
+.brand-left{display: flex;}
+
+/* ============ mobile view ============ */
+@media all and (max-width: 991px) {
+	.offcanvas-header{ display:block;}
+	.mobile-offcanvas{
+		visibility: hidden;
+		transform:translateX(-100%);
+	    border-radius:0; 
+		display:block;
+	    position: fixed;
+	    top: 0; left:0;
+	    height: 100%;
+	    z-index: 1200;
+	    width:80%;
+	    overflow-y: scroll;
+	    overflow-x: hidden;
+	    transition: visibility .3s ease-in-out, transform .3s ease-in-out;
+	}
+	.mobile-offcanvas.show{visibility: visible;	transform: translateX(0);}
+	.mobile-offcanvas .container, .mobile-offcanvas .container-fluid{
+		display: block;}
+	.serach-mob{display: block;}
+	.mobile-search-hide{display: none;}
+}
+</style>
+
+
+<span class="screen-darken"></span>
+<div class="shadow container-fluid p-0 text-dark"  style="background-color: #E4F7EB;">
+	<div class="container-lg m-0">
+		<div class="row py-2 m-0">
+			<div class="col-md-6 col-sm-6 mb-1 p-0">
+				<div class="brand-left">
+					<button class="navbar-toggler d-lg-none btn text-dark" type="button" data-toggle="collapse" data-trigger="navbar_main">
+						<i class="bi bi-bar-chart-steps"></i>
+						<a class="navbar-brand text-dark mx-2" href="#">Navbar</a>
+					</button>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6 mb-1 p-0">
+				<div class="serach-mob">
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-success" type="submit"><i class="fa fa-search py-1" style="font-size: 18px;"></i></button>
+						<button class="btn btn-success mx-2 rounded"><i class="fa fa-user py-1"></i></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ============= COMPONENT ============== -->
+	<nav id="navbar_main" class="mobile-offcanvas navbar py-2 text-white navbar-expand-lg" style="background-color: #E4F7EB;">
+	<div class="container-fluid">
+		<div class="offcanvas-header">  
+			<button class="btn-close m-1 float-end"></button>
+		</div>
+		<a class="navbar-brand text-dark mx-2 me-4" href="#">Navbar</a>
+
+		<ul class="navbar-nav">
+			<!-- <li><a href="#" class="navbar-brand"></li> -->
+			<li class="nav-item mx-2 active"> <a class="nav-link text-dark" href="#">Home </a> </li>
+			<li class="nav-item mx-2"><a class="nav-link text-dark" href="#"> About </a></li>
+			<li class="nav-item mx-2"><a class="nav-link text-dark" href="#"> Services </a></li>
+			<li class="nav-item mx-2 dropdown">
+				<a class="nav-link  dropdown-toggle text-dark" href="#" data-bs-toggle="dropdown">  More items  </a>
+				<ul class="dropdown-menu text-dark">
+				<li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+				<li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+				<li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="navbar-nav ms-auto mobile-search-hide">
+			<form class="d-flex" role="search">
+				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-success" type="submit"><i class="fa fa-search py-1" style="font-size: 18px;"></i></button>
+				<button class="btn btn-success mx-2 rounded"><i class="fa fa-user py-1"></i></button>
+			</form>
+		</ul>
+	</div> <!-- container-fluid.// -->
+	</nav>
+	<!-- ============= COMPONENT END// ============== -->
+</div><!-- container //  -->
+
+<script>
+	function darken_screen(yesno){
+		if( yesno == true ){
+			document.querySelector('.screen-darken').classList.add('active');
+		}
+		else if(yesno == false){
+			document.querySelector('.screen-darken').classList.remove('active');
+		}
+	}
+
+	function close_offcanvas(){
+		darken_screen(false);
+		document.querySelector('.mobile-offcanvas.show').classList.remove('show');
+		document.body.classList.remove('offcanvas-active');
+	}
+	
+	function show_offcanvas(offcanvas_id){
+		darken_screen(true);
+		document.getElementById(offcanvas_id).classList.add('show');
+		document.body.classList.add('offcanvas-active');
+	}
+	
+	document.addEventListener("DOMContentLoaded", function(){
+		document.querySelectorAll('[data-trigger]').forEach(function(everyelement){
+			
+			let offcanvas_id = everyelement.getAttribute('data-trigger');
+			
+			everyelement.addEventListener('click', function (e) {
+				e.preventDefault();
+				show_offcanvas(offcanvas_id);
+				
+			});
+		});
+	
+		document.querySelectorAll('.btn-close').forEach(function(everybutton){
+			
+			everybutton.addEventListener('click', function (e) {
+				e.preventDefault();
+				close_offcanvas();
+			});
+		});
+	
+		document.querySelector('.screen-darken').addEventListener('click', function(event){
+			close_offcanvas();
+		});
+		
+	}); 
+
+</script>
