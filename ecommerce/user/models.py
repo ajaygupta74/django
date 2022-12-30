@@ -1,10 +1,10 @@
 from django.db import models
 from sorl.thumbnail import ImageField
 from phonenumber_field.modelfields import PhoneNumberField
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 # from django.utils.html import mark_safe
 from django.contrib.auth.hashers import make_password
-import string    
+import string
 import random
 
 from django.db import models
@@ -19,7 +19,7 @@ class Avatar(models.Model):
     image = ImageField(upload_to='upload/images/users/avatar/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     # def image_preview(self):
     #     return mark_safe('<img src="%s" width="100" height="100" />' % (self.image))
 
@@ -28,7 +28,7 @@ class AbstractUser(models.Model):
     def generate_password():
         password = "dfghjk"
         return password
-    
+
     avatar = models.ForeignKey(Avatar,
                                related_name="users",
                                on_delete=models.CASCADE,
@@ -36,7 +36,7 @@ class AbstractUser(models.Model):
     password = models.CharField(max_length=100, default=generate_password())
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     def save(self, *args, **kwargs):
         self.password = make_password((self.password))
         super(AbstractUser, self).save(*args, **kwargs)
