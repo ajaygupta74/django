@@ -5,15 +5,15 @@ from user.models import User
 
 
 class NewUserForm(UserCreationForm):
-	phone = PhoneNumberField()
+    phone = PhoneNumberField()
 
-	class Meta:
-		model = User
-		fields = ("phone", "password1", "password2")
+    class Meta:
+        model = User
+        fields = ("phone", "password1", "password2")
 
-	def save(self, commit=True):
-		user = super(NewUserForm, self).save(commit=False)
-		user.email = self.cleaned_data['email']
-		if commit:
-			user.save()
-		return user
+    def save(self, commit=True):
+        user = super(NewUserForm, self).save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user

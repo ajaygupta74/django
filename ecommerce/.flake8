@@ -11,5 +11,5 @@ exclude =
     # This contains webpack builds
     dist,
     migrations,
-    ecommerce/settings,
+    settings,
 max-complexity = 10

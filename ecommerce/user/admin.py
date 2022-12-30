@@ -11,6 +11,7 @@ from user.models import (
     UserAddress,
 )
 
+
 @admin.register(Avatar)
 class Avatar(admin.ModelAdmin):
     list_display = (
@@ -26,22 +27,23 @@ class Avatar(admin.ModelAdmin):
         'updated_at',
     )
     # readonly_fields = ('imageview', )
-    
+
     # def image_preview(self, obj):
-        # if obj.image:
-        #     imagepreview = get_thumbnail(obj.image,
-        #                                  '150x150',
-        #                                  upscale=False,
-        #                                  crop=False)
-        #     return format_html(
-        #         '''<a href="{}" target="{}"><img src="{}"
-        #          width="{}" height="{}"></a>'''
-        #         .format(obj.image.url,
-        #                 "_blank",
-        #                 imagepreview.url,
-        #                 imagepreview.width,
-        #                 imagepreview.height))
-        # return ""
+    # if obj.image:
+    #     imagepreview = get_thumbnail(obj.image,
+    #                                  '150x150',
+    #                                  upscale=False,
+    #                                  crop=False)
+    #     return format_html(
+    #         '''<a href="{}" target="{}"><img src="{}"
+    #          width="{}" height="{}"></a>'''
+    #         .format(obj.image.url,
+    #                 "_blank",
+    #                 imagepreview.url,
+    #                 imagepreview.width,
+    #                 imagepreview.height))
+    # return ""
+
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -70,14 +72,15 @@ class UserAdmin(admin.ModelAdmin):
         'phone',
     )
     exclude = ('password', )
-    
+
     # def save_model(self, request, obj, form):
     #     if self.password is None:
-    #         self.password = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 6))
+    #         self.password = ''.join(random.choices(string
+    # .ascii_uppercase + string.digits, k = 6))
     #     return super().save_model(request, obj, form)
 
     # # def save(self):
-    # #     
+    # #
     # #     return super().clean()
 
 

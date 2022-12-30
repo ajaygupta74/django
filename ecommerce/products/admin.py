@@ -50,7 +50,7 @@ class ProductCategoryImageAdmin(admin.ModelAdmin):
         'updated_at',
     )
     search_fields = ('category__title',)
-    
+
 
 @admin.register(ProductCategoryFaq)
 class ProductCategoryFaqAdmin(admin.ModelAdmin):
@@ -67,7 +67,7 @@ class ProductCategoryFaqAdmin(admin.ModelAdmin):
         'updated_at',
     )
     search_fields = ('category__title',)
-    
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -92,7 +92,7 @@ class ProductAdmin(admin.ModelAdmin):
         'updated_at',
     )
     search_fields = ('category__title', 'title')
-    
+
 
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):
