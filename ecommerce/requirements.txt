@@ -73,7 +73,7 @@ wagtail==2.15.1
 fuzzywuzzy[speedup]==0.18.0
 django-health-check==3.16.5
 urllib3==1.25.11
-protobuf==3.19.0
+protobuf==3.19.5
 django-fsm==2.8.0
 django-useraudit==1.7.1
 django-user-agents==0.4.0
