@@ -69,7 +69,7 @@ pyparsing==2.4.7
 git+https://github.com/nitinv80/django-allauth.git@db198a1c27cfaf0eb9f1a2f6d4871399636ac54a
 PyJWT==2.0.1
 Python-Deprecated==1.1.0
-wagtail==2.15.1
+wagtail==2.15.2
 fuzzywuzzy[speedup]==0.18.0
 django-health-check==3.16.5
 urllib3==1.25.11
