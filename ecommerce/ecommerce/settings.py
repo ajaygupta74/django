@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "ckeditor",
     "user",
     "products",
+    # "messenger",
+    "music_player",
 ]
 
 MIDDLEWARE = [

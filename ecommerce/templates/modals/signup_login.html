@@ -1,0 +1,79 @@
+<div class="modal-dialog modal-dialog-scrollable text-dark">
+    <div class="modal-content">
+        <form id="login-form" class="m-0">
+            <div class="modal-header" style="background-color: #E4F7EB;">
+                <h5 class="modal-title" id="authmodallabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4 py-2 mb-3">
+                <div class="text-center">
+                    <img src="https://media.istockphoto.com/id/1281150061/vector/register-account-submit-access-login-password-username-internet-online-website-concept.jpg?s=612x612&w=0&k=20&c=9HWSuA9IaU4o-CK6fALBS5eaO1ubnsM08EOYwgbwGBo=" class="card-img-top w-75" alt="...">
+                </div>
+
+                <div class="input-group mb-3 px-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3 px-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                    <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="container-fluid p-0 mb-2 px-3">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        </div>
+                        <div class="text-end col-sm-6">
+                            <a class="text-decoration-none" href="forgot-password">Forgot Password</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container-fluid mt-3 px-3 text-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Login</button>
+                </div>
+            </div>
+            <div class="pt-0 px-3 pb-3" style="background-color: #E4F7EB;">
+                <div class="d-grid gap-2 py-2 px-4">
+                    <div id="emailHelp" class="form-text">doesn't have an account</div>
+                    <button type="button-lg" class="btn btn-success">Signup</button>
+                </div>
+            </div>
+            
+        </form>
+
+        <form id="signup-form" style="display: none;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="authmodallabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Phone</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">default message here</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Create Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div id="emailHelp" class="form-text">default message here</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success">Sign Up</button>
+            </div>
+        </form>
+
+    </div>
+</div>

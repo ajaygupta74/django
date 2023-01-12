@@ -4,3 +4,34 @@
 {% block title %}Be You | Home{% endblock title %}
 
 {% block logo %}<a class="navbar-brand ms-3" href="/">Be You</a>{% endblock logo %}
+
+
+{% block main %}
+{% block top_banner %}{% include 'base_wallpaper_crousel.html' %}{% endblock top_banner %}
+{% block app_list %}{% include 'app_list.html' %}{% endblock app_list %}
+{% block faqs %}{% include 'faqs.html' %}{% endblock faqs %}
+{% block shortinfo %} 
+<div class="container-fluid my-4" style="background-color: #E4F7EB;">
+    <div class="row w-75 mx-auto">
+        <div class="col-sm-6 py-3 text-center">
+        <div class="card border-0" style="background-color: #E4F7EB;">
+            <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        </div>
+        <div class="col-sm-6 py-3 text-center">
+        <div class="card border-0" style="background-color: #E4F7EB;">
+            <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock shortinfo %}
+{% endblock main %}
