@@ -13,7 +13,7 @@ Babel==2.8.0
 paytmchecksum==1.7.0
 beautifulsoup4==4.8.2
 coverage==4.5.3
-Django==3.2.7
+Django==3.2.17
 django-allow-cidr==0.4.0
 django-ckeditor==5.9.0
 django-mysql==3.10.0
